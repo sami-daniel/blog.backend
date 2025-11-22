@@ -1,0 +1,24 @@
+{
+  "name": "blog.backend",
+  "version": "0.0.1",
+  "description": "Blog backend that supports blog.frontend : |",
+  "homepage": "https://github.com/sami-daniel/blog.backend#readme",
+  "bugs": {
+    "url": "https://github.com/sami-daniel/blog.backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sami-daniel/blog.backend.git"
+  },
+  "license": "ISC",
+  "author": "tsoi",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
