@@ -29,7 +29,10 @@ function loadMorgan() {
 }
 
 function loadEnv() {
-    const nodeEnv = process.env.NODE_ENV || 'development';
+    const nodeEnv = process.env.NODE_ENV || (() => {
+        console.warn('NODE_ENV not set, defaulting to development');
+        return 'development';
+    })();
     const debug = nodeEnv !== 'production';
     
     if (debug) {

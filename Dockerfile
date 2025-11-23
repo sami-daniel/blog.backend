@@ -17,6 +17,8 @@ RUN chmod +x ./entrypoint.sh
 
 COPY . .
 
+RUN ls -la .
+
 RUN npm install --omit=dev
 
 CMD ["./entrypoint.sh"]
