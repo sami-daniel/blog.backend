@@ -53,7 +53,9 @@ function loadEnv() {
 }
 
 function checkEnv() { 
-    const required = ['ADMIN_USER', 'ADMIN_PASS_HASH'];
+    const required = [
+        'ADMIN_USER', 'ADMIN_PASS_HASH', 'DB_HOST',
+        'DB_USER', 'DB_PASS', 'DB_NAME', 'DB_PORT'];
     required.forEach((envVar) => {
         if (!process.env[envVar] || process.env[envVar] === '') {
             console.error(`Error: Missing required environment variable ${envVar}`);
