@@ -1,9 +1,8 @@
-create database if not exists blog_db;
-use blog_db;
+-- CREATE DATABASE blog_db; If running out of docker compose context
 
-create table if not exists posts (
-    id int auto_increment primary key,
-    title varchar(255) not null,
-    content text not null, -- markdown content
-    created_at timestamp default current_timestamp
+CREATE TABLE IF NOT EXISTS posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL, -- markdown content
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
