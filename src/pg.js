@@ -1,5 +1,9 @@
-function mountClient() {
-    return new Client({
+'use strict';
+
+import { Pool } from 'pg';
+
+function mountPool() {
+    return new Pool({
         host: process.env.DB_HOST,
         port: process.env.DB_PORT,
         user: process.env.DB_USER,
@@ -10,22 +14,23 @@ function mountClient() {
 
 export class Client {
     constructor() {
-        // TODO: Use pool for better performance
-        this.client = mountClient();
+        this.pool = mountPool();
     }
     
-    async #openConnection() {
-        await this.client.connect();
+    async #openConn() {
+        return await this.pool.connect();
     }
 
-    async #closeConnection() {
-        await this.client.end();
-    }
+    async command(q, params) {
+        let res;
+        let client;
+        try {
+            client = await this.#openConn();
+            res = await client.query(q, params);
+        } finally {
+            client.release();
+        }
 
-    async query(q, params) {
-        await this.#openConnection();
-        const res = await this.client.query(q, params);
-        await this.#closeConnection();
         return res;
     }
 }
